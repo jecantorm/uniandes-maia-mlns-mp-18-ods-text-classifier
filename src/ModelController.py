@@ -7,6 +7,8 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.stem.snowball import SnowballStemmer
 from nltk.corpus import stopwords
 
+JOBLIB_PIPELINE_PATH = "pipeline_quick_balanced_min_df2.joblib"
+
 for _pkg, _path in [('stopwords', 'corpora/stopwords'), ('punkt', 'tokenizers/punkt')]:
     try:
         nltk.data.find(_path)
@@ -33,7 +35,7 @@ class ModelController:
         if model_path is None:
             model_path = os.path.join(
                 os.path.dirname(__file__),
-                "..", "resources", "models", "best_pipeline_osdg.joblib"
+                "..", "resources", "models", JOBLIB_PIPELINE_PATH
             )
         self.pipeline = joblib.load(model_path)
 

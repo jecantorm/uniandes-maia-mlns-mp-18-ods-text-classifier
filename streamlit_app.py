@@ -21,7 +21,7 @@ html, body, [class*="css"] {
     font-family: 'Sora', sans-serif;
 }
 
-/* ── App background ── */
+/* ── Background ── */
 .stApp {
     background: linear-gradient(150deg, #f0f4ff 0%, #faf7ff 50%, #f4f0ff 100%);
     min-height: 100vh;
@@ -69,18 +69,14 @@ html, body, [class*="css"] {
     box-shadow: 0 4px 32px rgba(109,40,217,0.08), 0 1px 4px rgba(0,0,0,0.04);
 }
 
-/* ── Label encima de textarea ── */
+/* ── Label encima de textarea (Tu texto) ── */
 .input-label {
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #7c3aed;
-    margin-bottom: 0.45rem;
-}
-
-div[data-testid="stTextArea"] label {
-    display: none !important;
+    margin-bottom: 0.40rem;
 }
 
 /* ── Streamlit textarea override ── */
@@ -217,8 +213,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="card">', unsafe_allow_html=True)
-
 st.markdown('<div class="input-label">Tu texto</div>', unsafe_allow_html=True)
 user_text = st.text_area(
     label="",
@@ -234,7 +228,6 @@ if classify_clicked:
         st.warning("Por favor, ingresa un texto para clasificar.")
     else:
         controller, error = load_model()
-
         if error:
             st.error(f"Error al cargar el modelo: {error}")
         else:
@@ -255,4 +248,4 @@ if classify_clicked:
                 except Exception as e:
                     st.error(f"Ha ocurrido un error al clasificar el texto: {e}")
 
-st.markdown('</div>', unsafe_allow_html=True)  # close .card
+st.markdown('</div>', unsafe_allow_html=True)
