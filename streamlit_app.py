@@ -199,7 +199,7 @@ ODS_LABELS = {
 # Carga del modelo (cache habilidato)
 @st.cache_resource(show_spinner=False)
 def load_model():
-    """Instantiate ModelController (loads the pipeline once and caches it)."""
+    """Instancia ModelController (carga el modelo y lo guarda en caché)."""
     try:
         return ModelController(), None
     except Exception as e:
